@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import "./App.css";
+
 const App = () => {
   const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=8b1d8013";
   // useEffect uses a callback func (() => {API})
