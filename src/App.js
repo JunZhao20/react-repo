@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 const App = () => {
+  const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=8b1d8013";
   // useEffect uses a callback func (() => {API})
+
+  const searchMovies = async function (title) {
+    let res = await fetch(`${API_URL}&s=${title}`);
+    let data = await res.json();
+    console.log(data.Search);
+  };
   let apiKey = useEffect(() => {
-    fetch("http://www.omdbapi.com/?apikey=783da78e&")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    searchMovies("spiderman");
   }, []);
   return <h1>App</h1>;
 };
