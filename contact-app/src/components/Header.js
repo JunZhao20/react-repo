@@ -2,9 +2,9 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="ui fixed menu">
-      <div className="ui container centered grid">
-        <h2>Contact Manager</h2>
+    <div className="ui massive menu">
+      <div className="ui center aligned">
+        <h1>Contact Manager</h1>
       </div>
     </div>
   );
