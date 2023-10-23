@@ -6,10 +6,10 @@ import ContactList from "./components/ContactList.js";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
-      {/* <AddContact />
-      <ContactList /> */}
+      <AddContact />
+      {/* <ContactList /> */}
     </div>
   );
 }
