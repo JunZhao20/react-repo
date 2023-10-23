@@ -25,6 +25,8 @@
   position: absolute;
   border-radius: 20px;
   background-color: rgb(212, 212, 212);
+
+  padding: 10px;
 }
 
 .h1-contact {
