@@ -1,11 +1,13 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Header from "./components/Header.js";
 import AddContact from "./components/AddContact.js";
 import ContactList from "./components/ContactList.js";
 
 function App() {
+  const LOCAL_STORAGE_KEY = "contacts";
+
   const [contacts, setContacts] = useState([]);
 
   const addContactHandler = (contact) => {
@@ -14,6 +16,10 @@ function App() {
     setContacts([...contacts, contact]);
     console.log(contacts);
   };
+
+  useEffect(() => {
+    localStorage.getItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <div className="container">
