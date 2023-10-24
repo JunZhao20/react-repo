@@ -18,6 +18,7 @@ function App() {
     console.log(contacts);
   };
 
+  // sets data when contacts change
   useEffect(() => {
     // sets contacts to LOCAL_STORAGE_KEY
     // turn the object to string using JSON.stringify() for the key value
@@ -25,6 +26,7 @@ function App() {
     // Once contacts changes it will run the hook
   }, [contacts]);
 
+  // gets data once set
   useEffect(() => {
     // retrives data back from local storage by storing the data into a var
     // JSON.parse returns value to original data type
