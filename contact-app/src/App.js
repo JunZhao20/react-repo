@@ -6,6 +6,7 @@ import AddContact from "./components/AddContact.js";
 import ContactList from "./components/ContactList.js";
 
 function App() {
+  // this key will hold where the contacts state is stored
   const LOCAL_STORAGE_KEY = "contacts";
 
   const [contacts, setContacts] = useState([]);
@@ -18,9 +19,20 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.getItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+    // sets contacts to LOCAL_STORAGE_KEY
+    // turn the object to string using JSON.stringify() for the key value
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+    // Once contacts changes it will run the hook
   }, [contacts]);
 
+  useEffect(() => {
+    // retrives data back from local storage by storing the data into a var
+    // JSON.parse returns value to original data type
+    const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (getData) {
+      setContacts(getData);
+    }
+  }, [contacts]);
   return (
     <div className="container">
       <Header />
