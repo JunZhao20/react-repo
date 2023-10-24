@@ -5,17 +5,29 @@ class AddContact extends React.Component {
     name: "",
     email: "",
   };
+
+  add = (e) => {
+    e.preventDefault();
+    if (this.state.name === "" || this.state.name === "") {
+      alert("All fields are mandatory for input");
+      return;
+    }
+    // once contact added this will set the state value to empty
+    this.setState({ name: "", email: "" });
+    this.props.addContactHandler(this.state);
+  };
+
   render() {
     return (
       <div className="form">
         <h2 className="add">Add Contact</h2>
-        <form className="ui form">
+        <form className="ui form" onSubmit={this.add}>
           <div className="field">
             <label>Name</label>
             <input
               type="text"
               name="name"
-              placeholder="Input Name: "
+              placeholder="Name: "
               //Storing current value of state.name
               value={this.state.name}
               // Setting the state instance 'name' with the user input
@@ -27,7 +39,7 @@ class AddContact extends React.Component {
             <input
               type="text"
               name="email"
-              placeholder="Input Email: "
+              placeholder="Email: "
               value={this.state.email}
               onChange={(e) => this.setState({ email: e.target.value })}
             />
