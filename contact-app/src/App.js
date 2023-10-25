@@ -15,8 +15,17 @@ function App() {
     // '...contacts' is a copy of current state of the contact list
     // 'contact' is a new item that gets added into the end of the list.
     setContacts([...contacts, contact]);
-    console.log(contacts);
   };
+
+  // gets data once set
+  useEffect(() => {
+    // retrieves data back from local storage by storing the data into a var
+    // JSON.parse returns value to original data type
+    const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (getData) {
+      setContacts(getData);
+    }
+  }, []);
 
   // sets data when contacts change
   useEffect(() => {
@@ -24,16 +33,6 @@ function App() {
     // turn the object to string using JSON.stringify() for the key value
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
     // Once contacts changes it will run the hook
-  }, [contacts]);
-
-  // gets data once set
-  useEffect(() => {
-    // retrives data back from local storage by storing the data into a var
-    // JSON.parse returns value to original data type
-    const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (getData) {
-      setContacts(getData);
-    }
   }, [contacts]);
   return (
     <div className="container">
