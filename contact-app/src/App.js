@@ -21,6 +21,16 @@ function App() {
     setContacts([...contacts, contact]);
   };
 
+  // gets data once set
+  useEffect(() => {
+    // retrieves data back from local storage by storing the data into a var
+    // JSON.parse returns value to original data type
+    const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (getData) {
+      setContacts(getData);
+    }
+  }, []);
+
   // sets data when contacts change
   useEffect(() => {
     // sets contacts to LOCAL_STORAGE_KEY
@@ -28,6 +38,7 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
     // Once contacts changes it will run the hook
   }, [contacts]);
+<<<<<<< HEAD
 
   // gets data once set
   // useEffect(() => {
@@ -38,6 +49,8 @@ function App() {
   //     setContacts(getData);
   //   }
   // }, []);
+=======
+>>>>>>> cbc80958948a7da620ae5b64719a87add82c6f19
   return (
     <div className="container">
       <Header />
