@@ -38,7 +38,6 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
     // Once contacts changes it will run the hook
   }, [contacts]);
-<<<<<<< HEAD
 
   // gets data once set
   // useEffect(() => {
@@ -49,8 +48,6 @@ function App() {
   //     setContacts(getData);
   //   }
   // }, []);
-=======
->>>>>>> cbc80958948a7da620ae5b64719a87add82c6f19
   return (
     <div className="container">
       <Header />
