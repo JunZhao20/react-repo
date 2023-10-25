@@ -9,13 +9,16 @@ function App() {
   // this key will hold where the contacts state is stored
   const LOCAL_STORAGE_KEY = "contacts";
 
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    // the initial state will return the contacts data
+    const data = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    return data;
+  });
 
   const addContactHandler = (contact) => {
     // '...contacts' is a copy of current state of the contact list
     // 'contact' is a new item that gets added into the end of the list.
     setContacts([...contacts, contact]);
-    console.log(contacts);
   };
 
   // sets data when contacts change
@@ -27,14 +30,14 @@ function App() {
   }, [contacts]);
 
   // gets data once set
-  useEffect(() => {
-    // retrives data back from local storage by storing the data into a var
-    // JSON.parse returns value to original data type
-    const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (getData) {
-      setContacts(getData);
-    }
-  }, [contacts]);
+  // useEffect(() => {
+  //   // retrives data back from local storage by storing the data into a var
+  //   // JSON.parse returns value to original data type
+  //   const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+  //   if (getData) {
+  //     setContacts(getData);
+  //   }
+  // }, []);
   return (
     <div className="container">
       <Header />
